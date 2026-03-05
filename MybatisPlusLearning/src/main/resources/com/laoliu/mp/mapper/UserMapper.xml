@@ -6,6 +6,11 @@
         update user set age = age + #{num} ${ew.customSqlSegment}
     </update>
 
+    <update id="setAgeForUserById">
+        update user set age = #{age} where id = #{id}
+    </update>
+
+
     <delete id="deleteByPrimaryKey">
         delete from user where id = #{id}
     </delete>

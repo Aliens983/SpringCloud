@@ -50,3 +50,38 @@ AUTO SAAIGN_ID INPUT
 ```
 ${ew.customSqlSegment}
 ```
+
+batch 在性能上会好一点
+
+batch 批量提交SQL语句
+
+普通的则是使用where id in
+
+![image-20260305095733783](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305095733783.png)
+
+![image-20260305101650793](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305101650793.png)
+
+![image-20260305104609095](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305104609095.png)
+
+![image-20260305105409829](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305105409829.png)
+
+IService 的 Lambda查询
+
+```
+lambdaQuery
+```
+
+悲观锁
+
+乐观锁
+
+IService 的批量新增的功能
+
+批处理
+
+在配置文件的数据库配置后面添加
+
+```
+rewriteBatchedStatements=true
+```
+
