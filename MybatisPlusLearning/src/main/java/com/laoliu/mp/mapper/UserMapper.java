@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.laoliu.mp.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author 25516
