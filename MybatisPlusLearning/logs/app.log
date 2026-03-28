@@ -34,3 +34,25 @@
 2026-03-06 10:44:38.124 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
 2026-03-06 10:50:47.681 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
 2026-03-06 10:50:47.841 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-06 10:50:55.165 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-06 10:50:55.211 [main] INFO  c.l.m.MybatisPlusLearningApplication - Starting MybatisPlusLearningApplication using Java 17.0.13 with PID 17780 (D:\Spring_Cloud\MybatisPlusLearning\target\classes started by 25516 in D:\Spring_Cloud)
+2026-03-06 10:50:55.212 [main] DEBUG c.l.m.MybatisPlusLearningApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-06 10:50:55.212 [main] INFO  c.l.m.MybatisPlusLearningApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-06 10:50:56.371 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-06 10:50:56.383 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-06 10:50:56.385 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-06 10:50:56.385 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-06 10:50:56.483 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-06 10:50:56.483 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1203 ms
+2026-03-06 10:50:57.369 [main] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7caa550
+2026-03-06 10:50:57.500 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-06 10:50:57.516 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-06 10:50:57.524 [main] INFO  c.l.m.MybatisPlusLearningApplication - Started MybatisPlusLearningApplication in 2.829 seconds (process running for 3.647)
+2026-03-06 10:50:57.526 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-06 10:50:57.526 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-06 10:51:05.067 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-06 10:51:05.067 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-06 10:51:05.071 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-03-06 10:51:09.107 [http-nio-8080-exec-5] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 632 ms
+2026-03-06 15:01:17.662 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-06 15:01:18.006 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete

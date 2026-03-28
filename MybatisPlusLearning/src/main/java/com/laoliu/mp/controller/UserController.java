@@ -115,5 +115,14 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(summary = "Select user and address by id")
+    @GetMapping("/{id}/with-address")
+    public ResponseEntity<Map<String, Object>> selectUserWithAddressById(@PathVariable Integer id) {
+        User user = userService.selectUserWithAddressById(id);
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", user);
+        return ResponseEntity.ok(result);
+    }
+
 
 }

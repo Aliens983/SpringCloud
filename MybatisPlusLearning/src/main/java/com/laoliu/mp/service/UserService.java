@@ -14,4 +14,6 @@ public interface UserService extends IService<User> {
     List<User> queryUsersByIdsAndSpecificCondition(String name, Integer age, String email);
 
     void updateUserById(User user);
+
+    User selectUserWithAddressById(Integer id);
 }
