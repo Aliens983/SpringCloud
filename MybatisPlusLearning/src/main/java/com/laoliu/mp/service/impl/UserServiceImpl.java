@@ -1,10 +1,14 @@
 package com.laoliu.mp.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.toolkit.Db;
+import com.laoliu.mp.entity.Order;
 import com.laoliu.mp.entity.User;
 import com.laoliu.mp.mapper.UserMapper;
 import com.laoliu.mp.service.UserService;
+import com.laoliu.mp.vo.response.UserResponseVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +43,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
                 .set(user.getEmail() != null, User::getEmail, user.getEmail())
                 .set(user.getAddress() != null, User::getAddress, user.getAddress())
                 .update();
+    }
+
+    @Override
+    public User selectUserWithAddressById(Integer id) {
+        User user = getById(id);
+//        // query order by id
+//        List<Order> list = Db.lambdaQuery(Order.class)
+//                .eq(Order::getUserId, id)
+//                .list();
+//        // package user
+//        BeanUtils.copyProperties(user, UserResponseVO.class);
+        return user;
     }
 
     @Override

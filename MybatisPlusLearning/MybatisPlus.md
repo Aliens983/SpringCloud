@@ -85,3 +85,8 @@ IService 的批量新增的功能
 rewriteBatchedStatements=true
 ```
 
+MybatisPlus 扩展功能
+
+代码生成
+
+静态工具
