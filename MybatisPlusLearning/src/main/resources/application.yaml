@@ -1,11 +1,16 @@
 mybatis-plus:
+#  别名扫描包,作用:在mapper.xml中,可以直接使用别名,不需要全类名
   type-aliases-package: com.laoliu.mp.entity
+#  Mapper.xml文件的位置,作用:告诉Mybatis-Plus在哪里可以找到Mapper.xml文件,如果不配置,默认会在类路径下寻找与Mapper接口同名的xml文件
   mapper-locations: "classpath*:mapper/*.xml"
   configuration:
     map-underscore-to-camel-case: true
+#    是否开启二级缓存,默认是false
     cache-enabled: false
 #    全局的配置<局部表的配置.如果局部表配置了,则全局配置无效,以局部表为准
   global-config:
     db-config:
       id-type: auto
+#      更新策略
       update-strategy: not_null
+

@@ -1,14 +1,10 @@
 package com.laoliu.mp.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.extension.toolkit.Db;
-import com.laoliu.mp.entity.Order;
 import com.laoliu.mp.entity.User;
 import com.laoliu.mp.mapper.UserMapper;
 import com.laoliu.mp.service.UserService;
-import com.laoliu.mp.vo.response.UserResponseVO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +15,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
+// 继承ServiceImpl的两个参数分别是数据库操作Mapper和实体类
 public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements UserService {
     private final UserMapper userMapper;
 

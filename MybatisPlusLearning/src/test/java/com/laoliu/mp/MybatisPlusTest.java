@@ -21,7 +21,7 @@ class MybatisPlusTest {
 
     @Test
     void wayTest() {
-        int i = userMapper.updateById(new User(8, "囧囧菌", 334, "235626@qq.com", null));
+        int i = userMapper.updateById(new User(8, "囧囧菌", 334, "235626@qq.com", null, null,  null, null));
         log.info("更新了{}行数据", i);
         userMapper.selectByIds(List.of(1, 2, 3)).forEach(System.out::println);
     }
@@ -46,7 +46,7 @@ class MybatisPlusTest {
                 .eq("name", "张三")
                 .ge("age", 18);
 
-        int i = userMapper.update(new User(null, "阿囧囧囧", 188, "93459828673@qq.com", "北京"), userQueryWrapper);
+        int i = userMapper.update(new User(null, "阿囧囧囧", 188, "93459828673@qq.com", "北京" , null, null, null), userQueryWrapper);
         log.info("更新了{}行数据", i);
     }
 

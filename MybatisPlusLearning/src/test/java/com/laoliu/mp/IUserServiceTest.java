@@ -1,4 +1,4 @@
-package com.laoliu.mp.mapper;
+package com.laoliu.mp;
 
 import com.laoliu.mp.entity.User;
 import com.laoliu.mp.service.UserService;
@@ -11,24 +11,28 @@ import java.util.List;
 
 @Slf4j
 @SpringBootTest
-class UserMapperTest {
+class IUserServiceTest {
+
     @Autowired
     private UserService userService;
 
     @Test
-    void functionTestOfIService () {
+    void testSave() {
 
-        //save user
-        boolean save = userService.save(new User(null, "张三", 18, "123456@qq.com", "北京", "18888888888", 1, 1000.01));
-        log.info("保存了{}行数据", save ? 1 : 0);
-
-        // query user by ids
-        List<Integer> integers = List.of(1, 2, 3);
-        List<User> users = userService.listByIds(integers);
-        users.forEach( user  -> log.info("查询到的数据:{}", user));
-
-
-
+        User user = User.builder()
+                .name("laoliu")
+                .age(18)
+                .phone("272520572573")
+                .build();
+        // save user
+        userService.save(user);
     }
 
+    @Test
+    void testQuery() {
+        // query user by ids
+        List<Integer> integers = List.of(2, 3);
+        List<User> users = userService.listByIds(integers);
+        users.forEach(user -> log.info("查询到的数据:{}", user));
+    }
 }

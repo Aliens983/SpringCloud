@@ -18,4 +18,6 @@ public interface UserMapper extends BaseMapper<User> {
     int updateByWrapperAndNum(@Param(Constants.WRAPPER) LambdaQueryWrapper<User> userLambdaQueryWrapper, @Param("num") int num);
 
     void setAgeForUserById(@Param("id") Integer id, @Param("age") Integer age);
+
+    void updateByCustomSQL(@Param("amount") int amount, @Param(Constants.WRAPPER) LambdaQueryWrapper<User> lambdaQueryWrapper);
 }
