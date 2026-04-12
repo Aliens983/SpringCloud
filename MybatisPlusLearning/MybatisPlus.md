@@ -115,11 +115,15 @@ batch 批量提交SQL语句
 
 ![image-20260305095733783](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305095733783.png)
 
+
+
 page 分页查询
 
 复杂条件的查询使用LambdaQuery()
 
 或者LambdaUpdate()
+
+
 
 ![image-20260305101650793](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305101650793.png)
 
@@ -141,27 +145,52 @@ page 分页查询
 
 
 
-9  07:00
-
-
+复杂条件查询更新使用:
 
 IService 的 Lambda查询
 
 ```
-lambdaQuery
+lambdaQuery()
 ```
 
+lambdaQuery()
 
+​	.like(name!=null,User::getName,name)
 
+​	.list(); 
 
+lambdaUpdate()
+
+​	***.update()***;
 
 悲观锁
 
 乐观锁
 
+
+
 IService 的批量新增的功能
 
+
+
 批处理
+
+```
+// 每次插入1000条数据，分批插入10万条数据
+List<User> list = new ArrayList<>(1000);
+long b = System.currentTimeMillis();
+for (int i = 0; i < 100000; i++) {
+    list.add(buildUsers(i));
+    if (list.size() == 1000) {
+        userService.saveBatch(list);
+        list.clear();
+    }
+}
+long e = System.currentTimeMillis();
+log.info("批量插入10万条数据耗时: {}ms", e - b);
+```
+
+saveBatch()
 
 在配置文件的数据库配置后面添加
 
@@ -169,8 +198,18 @@ IService 的批量新增的功能
 rewriteBatchedStatements=true
 ```
 
+就可以实现新能最佳
+
+![image-20260412160017310](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260412160017310.png)
+
+
+
 MybatisPlus 扩展功能
 
+使用MybatisPlus扩展
+
 代码生成
+
+
 
 静态工具
