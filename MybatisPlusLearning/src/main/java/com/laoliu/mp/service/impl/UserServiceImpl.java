@@ -59,4 +59,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
     public void setAgeForSpecificUser(Integer id, Integer age) {
         userMapper.setAgeForUserById(id, age);
     }
+
+    @Override
+    public Boolean deductUserBalance(Integer id, Double amount) {
+        // 确实在扣减账户余额或者增加账户余额的时候需要校验用户是否存在,用户状态是否正常
+        // 扣减的余额有没有成为负数等等,这些都需要在执行mapper前进行校验
+        // 这里可以调用自己的方法去查询校验,这里可以直接使用this.XXX 方法去查询校验
+        User user = this.getById(id);
+        return userMapper.updateAmountById(id, amount);
+    }
 }

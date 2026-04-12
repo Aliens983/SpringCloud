@@ -16,4 +16,6 @@ public interface UserService extends IService<User> {
     void updateUserById(User user);
 
     User selectUserWithAddressById(Integer id);
+
+    Boolean deductUserBalance(Integer id, Double amount);
 }
