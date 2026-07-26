@@ -30,7 +30,7 @@ public class GetMessageController {
     @PostMapping
     public String getMessageFromConnected(@RequestParam String id){
         ResponseEntity<String> exchange = restTemplate.exchange(
-                "http://localhost:8081/getMessage?secret={id}",
+                "http://connected/getMessage?secret={id}",
                 HttpMethod.GET,
                 null,
                 String.class,
