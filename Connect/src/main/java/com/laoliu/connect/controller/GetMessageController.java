@@ -1,5 +1,6 @@
 package com.laoliu.connect.controller;
 
+import com.laoliu.connect.cilent.OpenFeignClient;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.core.ParameterizedTypeReference;
@@ -23,24 +24,34 @@ public class GetMessageController {
 
     private final RestTemplate restTemplate;
 
-    public GetMessageController(RestTemplate restTemplate) {
+    private final OpenFeignClient openFeignClient;
+
+    public GetMessageController(RestTemplate restTemplate, OpenFeignClient openFeignClient) {
         this.restTemplate = restTemplate;
+        this.openFeignClient = openFeignClient;
     }
 
+//    @PostMapping
+//    public String getMessageFromConnected(@RequestParam String id){
+//        ResponseEntity<String> exchange = restTemplate.exchange(
+//                "http://connected/getMessage?secret={id}",
+//                HttpMethod.GET,
+//                null,
+//                String.class,
+//                //如果返回值类型是对象的集合
+//                //new ParameterizedTypeReference<List<User>>() {},
+//                id
+//        );
+//        if (!exchange.getStatusCode().is2xxSuccessful()){
+//            return "Error";
+//        }
+//        return exchange.getBody();
+//    }
+
+    //使用OpenFeign
     @PostMapping
     public String getMessageFromConnected(@RequestParam String id){
-        ResponseEntity<String> exchange = restTemplate.exchange(
-                "http://connected/getMessage?secret={id}",
-                HttpMethod.GET,
-                null,
-                String.class,
-                //如果返回值类型是对象的集合
-                //new ParameterizedTypeReference<List<User>>() {},
-                id
-        );
-        if (!exchange.getStatusCode().is2xxSuccessful()){
-            return "Error";
-        }
-        return exchange.getBody();
+        return openFeignClient.getMessage(id);
+
     }
 }
