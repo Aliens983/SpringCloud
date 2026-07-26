@@ -18,6 +18,7 @@ import java.util.List;
 // 继承ServiceImpl的两个参数分别是数据库操作Mapper和实体类
 public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements UserService {
     private final UserMapper userMapper;
+    private final UserService userService;
 
     @Override
     public List<User> queryUsersByIdsAndSpecificCondition(String name, Integer age , String email) {

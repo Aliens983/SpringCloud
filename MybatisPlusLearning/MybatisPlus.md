@@ -115,7 +115,7 @@ batch 批量提交SQL语句
 
 ![image-20260305095733783](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260305095733783.png)
 
-
+IService 里面的接口都是非静态的
 
 page 分页查询
 
@@ -216,8 +216,49 @@ MybatisPlus 扩展功能
 
 传递.class,使用反射得到实体类的相关信息
 
-DB 
+DB ()
 
-如果出现service相互调用可以使用DB静态工具
+如果出现service相互调用(两个service相互注入,产生循环依赖)可以使用DB静态工具解决循环依赖的问题
 
+DB(静态工具)里面的方法都是静态的
+
+
+
+逻辑删除
+
+![image-20260704200356827](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260704200356827.png)
+
+逻辑删除存在的问题:
+
+1.数据库表垃圾数据越来越多,影响查询效率
+
+2.SQL要对逻辑删除字段做判断影响查询效率
+
+可以使用数据迁移的解决方案,把要删除的数据迁移到其他的表
+
+枚举处理器
+
+![image-20260704202840473](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260704202840473.png)
+
+给枚举中与数据库中对应的Value值添加@EnumValue注解
+
+@JsonValue
+
+加在哪就是放回什么
+
+![image-20260704203035062](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260704203035062.png)
+
+Json处理器
+
+数据库存储的时json
+
+Jackson Json
+
+@TableFiled(typeHandler = JacksonTypeHandler.class)
+
+@TableName(value="user",autoResultMap = true)
+
+![image-20260704204007315](C:\Users\25516\AppData\Roaming\Typora\typora-user-images\image-20260704204007315.png)
+
+分页查询
 
