@@ -74,6 +74,12 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <!-- version managed by spring-cloud-alibaba-dependencies BOM -->
         </dependency>
+
+        <!--sentinel-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,57 +1,42 @@
 package com.laoliu.connect.controller;
 
 import com.laoliu.connect.cilent.OpenFeignClient;
-import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 
 /**
  * @author 25516
  */
+@Slf4j
 @RestController
-@RequestMapping
-//@RequiredArgsConstructor 给加final的属性生成构造函数
+@RequestMapping("/byIDs")
 public class GetMessageController {
-
-    private final RestTemplate restTemplate;
 
     private final OpenFeignClient openFeignClient;
 
-    public GetMessageController(RestTemplate restTemplate, OpenFeignClient openFeignClient) {
-        this.restTemplate = restTemplate;
+    public GetMessageController(OpenFeignClient openFeignClient) {
         this.openFeignClient = openFeignClient;
     }
 
-//    @PostMapping
-//    public String getMessageFromConnected(@RequestParam String id){
-//        ResponseEntity<String> exchange = restTemplate.exchange(
-//                "http://connected/getMessage?secret={id}",
-//                HttpMethod.GET,
-//                null,
-//                String.class,
-//                //如果返回值类型是对象的集合
-//                //new ParameterizedTypeReference<List<User>>() {},
-//                id
-//        );
-//        if (!exchange.getStatusCode().is2xxSuccessful()){
-//            return "Error";
-//        }
-//        return exchange.getBody();
-//    }
-
     //使用OpenFeign
     @PostMapping
+    @SentinelResource(value = "getMessageFromConnected", fallback = "getMessageFallback")
     public String getMessageFromConnected(@RequestParam String id){
         return openFeignClient.getMessage(id);
+    }
 
+    /**
+     * fallback：业务异常（如远程调用失败、404 等）时触发。
+     * 注意：带 Throwable 参数的 fallback 只处理业务异常，不处理限流(BlockException)；
+     * 之后若做限流，需另配 blockHandler。
+     */
+    public String getMessageFallback(String id, Throwable e) {
+        log.error("调用 connected 服务失败", e);
+        return "Service is temporarily unavailable due to flow control or degradation.";
     }
 }

@@ -15,10 +15,14 @@ spring:
       httpclient:
         hc5:
           enabled: true
-#      config:
-#        server-addr: 127.0.0.1:8848
-#        username: nacos
-#        password: nacos
+    sentinel:
+      transport:
+        dashboard: localhost:8858
+        port: 8720                 # 使用不同端口避免冲突
+        client-ip: 192.168.65.254  # 容器内看到的宿主IP (ping host.docker.internal 解析值)
+      # 启用日志记录以便调试
+      log:
+        dir: ./logs/csp/
 
 server:
   port: 9080

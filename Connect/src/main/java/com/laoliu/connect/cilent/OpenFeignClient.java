@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "connected")
 public interface OpenFeignClient {
 
-    @GetMapping("/getMessage")
+    @GetMapping("/message/getMessage")
     String getMessage(@RequestParam("secret") String secret);
 
 

@@ -1,4 +1,4 @@
-﻿spring:
+spring:
   application:
     name: connected
   cloud:
@@ -11,6 +11,14 @@
         username: nacos
         password: nacos
         group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        dashboard: localhost:8858
+        port: 8721                 # 使用不同的端口避免冲突
+        client-ip: 192.168.65.254  # 容器内看到的宿主IP (ping host.docker.internal 解析值)
+      # 启用日志记录以便调试
+      log:
+        dir: ./logs/csp/
 
 server:
   port: 8081
